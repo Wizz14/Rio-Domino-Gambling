@@ -1,3 +1,3 @@
 # Rio Domino Gambling
 
-Simple IONIC2 project for calculate gambling
+Ionic2 simple project for calculate gambling
