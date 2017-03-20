@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Rio Domino
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="game.step == 1">
+    <ion-card>
+      <ion-card-header>
+        <b>Total Round : {{game.round}}</b>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-range [(ngModel)]="game.round" color="primary" pin="true" snaps="true" min="2" max="15" mode="ios"></ion-range>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <b>Players</b>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let p of game.player">
+            <ion-label>{{p.name}}</ion-label>
+            <ion-checkbox [(ngModel)]="p.isJoin"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="game.step == 2">
+    <ion-card>
+      <ion-card-header>
+        <b>Start - Stop</b>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-list>
+          <ion-item *ngFor="let p of game.player | isJoinFilter : true">
+            <ion-label style="margin: 0px;">{{p.name}} </ion-label>
+            <ion-range color="primary" style="padding: 0px;padding-bottom: 2rem;" [(ngModel)]="p.dualValue" pin="true" snaps="true" min="1" max="{{game.round}}" dualKnobs="true" mode="ios">
+                <ion-label range-left>{{p.dualValue.lower}}</ion-label>
+                <ion-label range-right>{{p.dualValue.upper}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="game.step == 3">
+    <ion-card>
+      <ion-card-header>
+        <b>Winner</b>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let r of winnerEachRound;let i = index">
+            <ion-label>Round {{i+1}}</ion-label>
+            <ion-select  [(ngModel)]="r.player">
+              <ion-option *ngFor="let w of game.player | isJoinFilter : true | isPlayFilter : i" [value]="w" >{{w.name}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="game.step == 4">
+    <ion-card>
+      <ion-card-header>
+        <b>Summary</b>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row *ngFor="let p of summary">
+            <ion-col col-4>{{p.player.name}}</ion-col>
+            <ion-col col-8><b>{{p.summaryNumber}}</b> = {{p.summaryText}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-fab left bottom *ngIf="game.step != 1">
+    <button ion-fab mini color="primary" (tap)="previous()"><ion-icon name="md-arrow-round-back" ></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab right bottom *ngIf="game.step != 4">
+    <button ion-fab mini color="primary" (tap)="next()"><ion-icon name="md-arrow-round-forward" ></ion-icon></button>
+  </ion-fab>
+
+
+</ion-content>
