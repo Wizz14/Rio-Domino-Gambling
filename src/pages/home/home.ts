@@ -24,12 +24,12 @@ export class HomePage {
     this.game.player.push({ name: "Boy", isJoin: false, dualValue: { lower: 1, upper: 15 } });
     this.game.player.push({ name: "Bung", isJoin: false, dualValue: { lower: 1, upper: 15 } });
     this.game.player.push({ name: "Nook", isJoin: false, dualValue: { lower: 1, upper: 15 } });
-    this.game.player.push({ name: "Boat", isJoin: false, dualValue: { lower: 1, upper: 15 } });
+    this.game.player.push({ name: "Yos", isJoin: false, dualValue: { lower: 1, upper: 15 } });
     this.game.player.push({ name: "Nut", isJoin: false, dualValue: { lower: 1, upper: 15 } });
     this.game.player.push({ name: "Pui", isJoin: false, dualValue: { lower: 1, upper: 15 } });
-    this.game.player.push({ name: "Moo", isJoin: false, dualValue: { lower: 1, upper: 15 } });
-    this.game.player.push({ name: "Guest1", isJoin: false, dualValue: { lower: 1, upper: 15 } });
-    this.game.player.push({ name: "Guest2", isJoin: false, dualValue: { lower: 1, upper: 15 } });
+    this.game.player.push({ name: "Parn", isJoin: false, dualValue: { lower: 1, upper: 15 } });
+    this.game.player.push({ name: "Kwan", isJoin: false, dualValue: { lower: 1, upper: 15 } });
+    this.game.player.push({ name: "Mali", isJoin: false, dualValue: { lower: 1, upper: 15 } });
   }
 
 
